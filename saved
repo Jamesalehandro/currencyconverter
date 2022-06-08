@@ -1,0 +1,97 @@
+
+
+
+
+for(let i = 0; i < dropList.length; i++) {
+    for(let currencyCode in country_list){
+         // selecting USD by default as FROM currency and NPR as TO currency
+         let selected = i == 0 ? currencyCode == "USD" ? "selected" : "" : currencyCode == "NGN" ? "selected" : "";
+        
+
+         let optionTag = `<option value="${currencyCode}" ${selected}>${currencyCode}</option>`;
+         dropList[i].insertAdjacentHTML('beforeend', optionTag);
+    }
+
+    dropList[i].addEventListener('change', (e) => {
+        loadFlag(e.target);
+    })
+};
+
+
+
+// To make the flag match the option
+loadFlag = (event) => {
+    for(let code in country_list){
+       if(code == event.value){
+          // if currency code of country list is equal to option value
+        //   Below is also good for getting a particular element in html when you want to manipulate more than one element.
+          let imgTag = event.parentElement.querySelector("img"); 
+          // selecting img tag of particular drop list
+          // passing country code of a selected currency code in a img url
+          
+          imgTag.src = `https://flagcdn.com/48x36/${country_list[code].toLowerCase()}.png`;
+       }
+    }
+};
+
+
+getExchangeRate = () => {
+    let amountVal = inputBtn.value;
+
+    if (amountVal == '' || amountVal == '0') {
+        inputBtn.value = "1";
+        amountVal = 1;
+    }
+
+    exchangeRateTxt.innerText = 'Getting exchange rate...';
+
+    let url = ` https://v6.exchangerate-api.com/v6/5fbee43dfe19589640a66d88/latest/${fromCurrency.value}`
+    
+  
+    fetch(url).then(resp => resp.json()).then(res =>{
+        console.log(res);
+
+            let exchangeRate = res.conversion_rates[toCurrency.value];
+            console.log(exchangeRate);
+            let totalExRate = (amountVal * exchangeRate).toFixed(3);
+            
+    
+            exchangeRateTxt.innerText = `${amountVal} ${fromCurrency.value} = ${totalExRate} ${toCurrency.value}`
+        
+    }).catch(() => {
+        exchangeRateTxt.innerText = 'Something went wrong'
+    });
+};
+
+
+
+
+
+exchangeBtnFunc = () => {
+    let tempCode = fromCurrency.value;
+    fromCurrency.value = toCurrency.value;
+    toCurrency.value = tempCode;
+
+    loadFlag(fromCurrency);
+    loadFlag(toCurrency);
+
+    getExchangeRate();
+}
+
+
+
+
+
+
+getButton.addEventListener('click', (e)=> {
+    e.preventDefault();
+    getExchangeRate()
+});
+
+
+exchangeBtn.addEventListener('click', exchangeBtnFunc);
+
+
+window.addEventListener("load", ()=>{
+    getExchangeRate();
+});

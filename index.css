@@ -1,0 +1,137 @@
+/* Import Google Font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    width: 50%;
+    min-height: 300px;
+    margin: 100px auto;
+    padding: 10px;
+    background: cornflowerblue;
+    color: white;
+    box-shadow: 0 0 20px gray;
+    border-radius: 10px;
+}
+
+::selection{
+    color: white;
+    background: blue;
+}
+
+.container header{
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+}
+
+
+.container form{
+    margin: 40px 0 20px 0;
+}
+
+
+form :where(input, select, button){
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+}
+
+form p{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+form input{
+    height: 50px;
+    font-size: 17px;
+    padding: 0 15px;
+    border: 1px solid grey;
+}
+
+form input:focus{
+    padding: 0 14px;
+    border: 2px solid crimson;
+}
+
+
+.dropList{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.dropList .selectBox{
+    display: flex;
+    width: 115px;
+    border: 2px solid black;
+    height: 45px;
+    align-items: center;
+    background-color: white;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid #999;
+}
+
+img{
+    max-width: 21px;
+}
+
+.selectBox select{
+    width: auto;
+    font-size: 16px;
+    background: none;
+    margin: 0 -5px 0 5px;
+}
+
+
+/* Learn More */
+.select-box select::-webkit-scrollbar{
+    width: 8px;
+  }
+  .select-box select::-webkit-scrollbar-track{
+    background: #fff;
+  }
+  .select-box select::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 8px;
+    border-right: 2px solid #ffffff;
+  }
+
+.dropList .icon{
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 22px;
+    color: black;
+}
+
+.exchangeRateTxt{
+    font-size: 17px;
+    margin: 20px 0 30px;
+}
+
+button{
+    height: 52px;
+    color: white;
+    font-size: 17px;
+    margin-top: 10px;
+    cursor: pointer;
+    background: greenyellow;
+    transition: all 0.9s ease;
+}
+
+button:hover{
+    background: blueviolet;
+    transform: scale(0.98);
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>Currency Converter</title>
+</head>
+<body>
+    <div class="container">
+        <header>Currency Converter</header>
+
+        <form action="#">
+
+            <div class="amount">
+                <p>Enter Amount</p>
+                <input id="inputBtn" type="number" value="" required>
+            </div>
+
+            <div class="dropList">
+                <div class="from">
+                    <p>From</p>
+
+                    <div class="selectBox">
+                        <img class="imgBtn" src="https://flagcdn.com/48x36/us.png" alt="flag">  
+                        <select name="select" id="selectedFrom"></select> 
+                    </div>
+
+                </div>
+
+
+                <div class="icon" id="exchangeBtn"><i class="fas fa-exchange-alt"></i></div>
+
+
+                <div class="to">
+                    <p>To</p>
+
+                    <div class="selectBox">
+                        <img class="imgBtn" src="https://flagcdn.com/48x36/ng.png" alt="flag">  
+                        <select name="select" id="selectedTo">   
+                        </select> 
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="exchangeRateTxt"></div>
+            <button id="getBtn">Get Exchange Rate</button>
+
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
